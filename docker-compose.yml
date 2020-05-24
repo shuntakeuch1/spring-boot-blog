@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  # tomcat:
+  #   container_name: tomcat
+  #   build: .
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - .:/app
+  #   environment:
+  #     spring.datasource.url: "jdbc:mysql://db/example"
+  #     spring.datasource.username: "root"
+  #     spring.datasource.password: "root"
+  #     spring.datasource.driver-class-name: "com.mysql.cj.jdbc.Driver"
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-size: "10m"
+  #       max-file: "3"
+
+  # redis:
+  #   image: "redis:5.0.5"
+  #   ports:
+  #     - 16379:6379
+
+  db:
+    build:
+      context: "./mysql"
+    volumes:
+     - ./mysql/data/:/var/lib/mysql/
+    environment:
+      MYSQL_DATABASE: example
+      MYSQL_ROOT_PASSWORD: root
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+     - 3306:3306
