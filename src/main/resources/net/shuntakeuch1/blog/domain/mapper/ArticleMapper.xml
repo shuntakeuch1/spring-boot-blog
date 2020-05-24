@@ -4,6 +4,6 @@
 	<resultMap id="list" type="net.shuntakeuch1.blog.domain.Article">
 		<id column="id" property="id"/>
 		<result column="title" property="title"/>
-		<result column="body" property="body" />
+		<result column="body" property="body"/>
 	</resultMap>
 </mapper>
