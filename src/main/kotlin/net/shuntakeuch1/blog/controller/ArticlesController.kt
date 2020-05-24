@@ -1,9 +1,11 @@
 package net.shuntakeuch1.blog.controller
 
+import net.shuntakeuch1.blog.domain.Article
+import net.shuntakeuch1.blog.domain.mapper.ArticleMapper
 import org.springframework.web.bind.annotation.*
 
 @RestController
-class ArticlesController {
+class ArticlesController(private val articleMapper: ArticleMapper) {
 
 	@GetMapping("/v1/articles")
 	fun index() = "記事一覧"
@@ -11,8 +13,14 @@ class ArticlesController {
 	@GetMapping("/v1/articles/{id}")
 	fun get() = "記事取得"
 
-	@PostMapping("/v1/articles/{id}")
-	fun create() = "記事作成"
+	@PostMapping("/v1/articles")
+	fun create(): Article {
+		var article = Article()
+		article.title = "初めてのブログ"
+		article.body = "Spring Boot 書くの疲れる"
+		articleMapper.insert(article)
+		return article
+	}
 
 	@PutMapping("/v1/articles/{id}")
 	fun update() = "記事更新"

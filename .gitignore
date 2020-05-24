@@ -33,3 +33,7 @@ out/
 
 /mysql/data
 /gradle/wrapper/gradle-wrapper.jar
+
+/mapper
+/model
+/src/main/resources/sqlmap
