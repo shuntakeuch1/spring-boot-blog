@@ -38,6 +38,7 @@ dependencies {
 	}
 	testImplementation("org.springframework.security:spring-security-test")
 	runtimeOnly("mysql:mysql-connector-java:8.0.15")
+	testImplementation("com.h2database:h2:1.4.197")
 }
 
 dependencyManagement {
