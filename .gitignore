@@ -32,3 +32,4 @@ out/
 .vscode/
 
 /mysql/data
+/gradle/wrapper/gradle-wrapper.jar
