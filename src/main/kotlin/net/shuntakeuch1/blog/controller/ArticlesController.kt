@@ -8,14 +8,16 @@ import org.springframework.web.bind.annotation.*
 class ArticlesController(private val articleMapper: ArticleMapper) {
 
 	@GetMapping("/v1/articles")
-	fun index() = "記事一覧"
+	fun list(): List<Article> {
+		return articleMapper.findAll()
+	}
 
 	@GetMapping("/v1/articles/{id}")
 	fun get() = "記事取得"
 
 	@PostMapping("/v1/articles")
 	fun create(): Article {
-		var article = Article()
+		val article = Article()
 		article.title = "初めてのブログ"
 		article.body = "Spring Boot 書くの疲れる"
 		articleMapper.insert(article)

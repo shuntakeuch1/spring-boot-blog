@@ -3,7 +3,9 @@ package net.shuntakeuch1.blog.controller
 import org.junit.jupiter.api.Test
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
+import org.springframework.transaction.annotation.Transactional
 
+@Transactional
 class ArticlesControllerTest:BaseControllerTest() {
 
 	@Test
