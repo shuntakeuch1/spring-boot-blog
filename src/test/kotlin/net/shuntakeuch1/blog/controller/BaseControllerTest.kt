@@ -1,5 +1,6 @@
 package net.shuntakeuch1.blog.controller
 
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.junit.jupiter.api.BeforeEach
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -26,10 +27,13 @@ class BaseControllerTest {
 			.build()
 	}
 
-	protected fun perform(requestBuilder: RequestBuilder, expect: String) {
-		mockMvc.perform(requestBuilder)
+	protected fun perform(requestBuilder: RequestBuilder, expect: Any) {
+		val expectJson = jacksonObjectMapper().writeValueAsString(expect)
+		val result =  mockMvc.perform(requestBuilder)
 			.andDo(MockMvcResultHandlers.print())
 			.andExpect(status().isOk)
-			.andExpect(content().json(expect))
+			.andExpect(content().json(expectJson))
+			.andReturn()
+		println(result.response.contentAsString)
 	}
 }
