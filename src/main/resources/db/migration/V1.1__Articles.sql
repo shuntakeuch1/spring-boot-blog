@@ -1,0 +1,7 @@
+CREATE TABLE articles (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(50),
+    body TEXT,
+    created_at DATETIME DEFAULT NULL,
+    modified_at DATETIME DEFAULT NULL
+);
